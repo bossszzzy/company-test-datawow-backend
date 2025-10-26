@@ -6,7 +6,7 @@ export const envSchema = baseSchema;
 export type EnvConfig = z.infer<typeof envSchema>;
 
 export const validate = (config: Record<string, any>) => {
-  const { data, error, success } = envSchema.safeParse(config);
+  const { data, success, error } = envSchema.safeParse(config);
   if (!success) {
     throw new Error(`Env validation failed \n${z.prettifyError(error)}`);
   }
